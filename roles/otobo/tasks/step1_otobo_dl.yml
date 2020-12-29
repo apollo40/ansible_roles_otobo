@@ -1,0 +1,31 @@
+---
+- name: 'Create a temporary install directory'
+  file:
+    path: /opt/otobo-install
+    state: directory
+  become: true
+
+- name: 'Download Archive'
+  tags: step1
+  get_url:
+    url: https://ftp.otobo.org/pub/otobo/otobo-latest-{{ otobo_version }}.tar.gz
+    dest: /opt/otobo-install
+  become: true
+
+- name: 'Untar Archive'
+  shell:
+    cmd: tar -xzf otobo-latest-{{ otobo_version }}.tar.gz
+    chdir: /opt/otobo-install
+  become: true
+
+- name: 'Remove Archive'
+  file:
+    path: /opt/otobo-install/otobo-latest-{{ otobo_version }}.tar.gz
+    state: absent
+  become: true
+
+- name: 'Move the new otobo directory to /opt/otobo'
+  shell:
+    cmd: mv otobo-{{ otobo_latest }}/ /opt/otobo
+    chdir: /opt/otobo-install
+  become: true

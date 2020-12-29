@@ -1,0 +1,7 @@
+---
+- name: otobo
+  hosts: all
+  remote_user: root
+  become: true
+  roles:
+    - otobo

@@ -1,0 +1,40 @@
+---
+- name: 'Install Apache2'
+  apt:
+    name: 
+      - apache2
+      - libapache2-mod-perl2
+  become: true
+
+- name: 'Enable Apache Module'
+  command: "{{ item }}"
+  with_items:
+    - a2enmod perl
+    - a2enmod deflate
+    - a2enmod filter
+    - a2enmod headers
+    - a2enmod ssl 
+    - a2enmod rewrite
+  become: true
+
+- name: 'Copy Apache SSL Conf'
+  copy:
+    src: zzz_otobo-443.conf
+    dest: /etc/apache2/sites-available/zzz_otobo-443.conf
+  become: true
+
+- name: 'Copy Apache Conf'
+  copy:
+    src: zzz_otobo-80.conf
+    dest: /etc/apache2/sites-available/zzz_otobo-80.conf
+  become: true
+
+- name: 'Enable apache site'
+  command: a2ensite zzz_otobo-443.conf
+  become: true
+  notify: restart apache
+
+- name: 'Enable apache site'
+  command: a2ensite zzz_otobo-80.conf
+  become: true
+  notify: restart apache

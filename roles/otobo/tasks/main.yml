@@ -1,0 +1,27 @@
+---
+- include: update_system.yml
+  tags: [ update, install ]
+
+- include: step1_otobo_dl.yml
+  tags: [ step1, install ]
+
+- include: step2_programms.yml
+  tags: [ step2, install ]
+
+- include: step3_user.yml
+  tags: [ step3, install ]
+
+- include: step4_config.yml
+  tags: [ step4, install ]
+
+- include: step5_apache.yml
+  tags: [ step5, install ]
+
+- include: step7_database.yml
+  tags: [ step7, install ]
+
+- include: step8_elastic-search.yml
+  tags: [ step8, install ]
+
+- include: step9_cronjob.yml
+  tags: [ step9, install ]

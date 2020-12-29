@@ -1,0 +1,8 @@
+---
+- name: 'Generate Otobo User'
+  user: name=otobo shell=/bin/bash home=/opt/otobo
+  become: true
+
+- name: 'Add Otobo User to www-data'
+  command: usermod -G www-data otobo
+  become: true

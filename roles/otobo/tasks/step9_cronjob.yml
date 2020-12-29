@@ -1,0 +1,6 @@
+---
+- name: Cronjob for Otobo Deamon
+  cron:
+    name: "otobo deamon"
+    minute: "*/5"
+    job: "/opt/otobo/bin/otobo.Daemon.pl start >> /dev/null"

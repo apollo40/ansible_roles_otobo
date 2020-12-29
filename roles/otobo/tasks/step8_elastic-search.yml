@@ -1,0 +1,29 @@
+---
+- name: 'Elastic Search '
+  apt:
+    name: apt-transport-https
+    state: present
+  become: true
+
+- name: 'Elastic Search GPG-KEY'
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+  become: true
+
+- name: 'Elastic Search add Package'
+  apt_repository:
+    repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
+    state: present
+
+- name: 'Install Elastic Search'
+  apt:
+    name: elasticsearch
+    state: latest
+  become: true
+
+- name: 'Install Otobo Plugins Nr01'
+  command: /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch ingest-attachment
+
+- name: 'Install Otobo Plugins Nr02'
+  command: /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch analysis-icu

@@ -1,0 +1,12 @@
+---
+- name: 'Activate the Default Configuration File'
+  shell:
+    cmd: cp Kernel/Config.pm.dist Kernel/Config.pm
+    chdir: /opt/otobo
+  become: true
+
+- name: 'Set Permissions for www-data'
+  shell:
+    cmd: bin/otobo.SetPermissions.pl --web-group=www-data
+    chdir: /opt/otobo
+  become: true

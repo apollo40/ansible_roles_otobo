@@ -1,0 +1,32 @@
+---
+- name: 'Install Additional Programs and Perl Modules'
+  apt:
+    name:
+      - libarchive-zip-perl 
+      - libtimedate-perl 
+      - libdatetime-perl 
+      - libconvert-binhex-perl 
+      - libdbi-perl
+      - libmoo-perl 
+      - libnamespace-autoclean-perl 
+      - libnet-dns-perl 
+      - libnet-smtp-ssl-perl 
+      - libsub-exporter-perl 
+      - libtemplate-perl 
+      - libtemplate-perl 
+      - libxml-libxml-perl 
+      - libyaml-libyaml-perl 
+      - libdbd-mysql-perl 
+      - libapache2-mod-perl2 
+      - libmail-imapclient-perl 
+      - libauthen-sasl-perl 
+      - libauthen-ntlm-perl 
+      - libjson-xs-perl 
+      - libtext-csv-xs-perl 
+      - libencode-hanextra-perl 
+      - libio-socket-ssl-perl 
+      - libnet-ldap-perl 
+      - libcrypt-eksblowfish-perl 
+      - libxml-libxslt-perl 
+      - libxml-parser-perl
+  become: true
